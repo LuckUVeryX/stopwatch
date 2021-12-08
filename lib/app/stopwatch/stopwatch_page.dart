@@ -55,7 +55,16 @@ class StopwatchPage extends StatelessWidget {
                           rotationZAngle: pi + (2 * pi / 60000) * 5000,
                           handLength: radius,
                         ),
-                      )
+                      ),
+                      for (int s = 0; s < 30 * 60; s += 30)
+                        Positioned(
+                          left: radius,
+                          top: radius * 2 / 3,
+                          child: StopwatchMinsTickMarker(
+                            seconds: s,
+                            radius: radius / 4,
+                          ),
+                        ),
                     ],
                   );
                 }),

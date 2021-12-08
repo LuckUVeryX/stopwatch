@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 
 import '../../../core/palette.dart';
 
-class StopwatchTickMarker extends StatelessWidget {
-  const StopwatchTickMarker(
+class StopwatchSecsTickMarker extends StatelessWidget {
+  const StopwatchSecsTickMarker(
       {Key? key, required this.milliseconds, required this.radius})
       : super(key: key);
 

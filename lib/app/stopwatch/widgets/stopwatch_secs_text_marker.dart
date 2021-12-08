@@ -2,8 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-class StopwatchTextMarker extends StatelessWidget {
-  const StopwatchTextMarker({
+class StopwatchSecsTextMarker extends StatelessWidget {
+  const StopwatchSecsTextMarker({
     Key? key,
     required this.value,
     required this.maxValue,

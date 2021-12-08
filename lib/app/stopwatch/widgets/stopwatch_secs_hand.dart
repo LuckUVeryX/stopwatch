@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../core/palette.dart';
 
-class StopwatchHand extends StatelessWidget {
-  const StopwatchHand({
+class StopwatchSecsHand extends StatelessWidget {
+  const StopwatchSecsHand({
     Key? key,
     required this.rotationZAngle,
     required this.handLength,

@@ -25,7 +25,7 @@ class StopwatchPage extends StatelessWidget {
                         Positioned(
                           left: radius,
                           top: radius,
-                          child: StopwatchTickMarker(
+                          child: StopwatchSecsTickMarker(
                             milliseconds: ms,
                             radius: radius,
                           ),
@@ -34,7 +34,7 @@ class StopwatchPage extends StatelessWidget {
                         Positioned(
                           left: radius,
                           top: radius,
-                          child: StopwatchTextMarker(
+                          child: StopwatchSecsTextMarker(
                             value: s,
                             maxValue: 60000,
                             radius: radius,
@@ -51,7 +51,7 @@ class StopwatchPage extends StatelessWidget {
                       Positioned(
                         left: radius,
                         top: radius,
-                        child: StopwatchHand(
+                        child: StopwatchSecsHand(
                           rotationZAngle: pi + (2 * pi / 60000) * 5000,
                           handLength: radius,
                         ),

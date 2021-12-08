@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'core/palette.dart';
 import 'core/router/router.gr.dart';
 
 void main() {
@@ -19,7 +20,8 @@ class MyApp extends StatelessWidget {
       child: MaterialApp.router(
         routerDelegate: _appRouter.delegate(),
         routeInformationParser: _appRouter.defaultRouteParser(),
-        theme: ThemeData.dark().copyWith(scaffoldBackgroundColor: Colors.black),
+        theme:
+            ThemeData.dark().copyWith(scaffoldBackgroundColor: Palette.kBlack),
       ),
     );
   }

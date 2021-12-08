@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 import 'widgets/widgets.dart';
@@ -44,6 +46,14 @@ class StopwatchPage extends StatelessWidget {
                         top: radius * 1.35,
                         child: const StopwatchElapsedTimeText(
                           elapsed: Duration(seconds: 0),
+                        ),
+                      ),
+                      Positioned(
+                        left: radius,
+                        top: radius,
+                        child: StopwatchHand(
+                          rotationZAngle: pi + (2 * pi / 60000) * 5000,
+                          handLength: radius,
                         ),
                       )
                     ],

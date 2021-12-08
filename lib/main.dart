@@ -1,17 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+import 'core/router/router.gr.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
+  final _appRouter = AppRouter();
+
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(),
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle.light,
+      child: MaterialApp.router(
+        routerDelegate: _appRouter.delegate(),
+        routeInformationParser: _appRouter.defaultRouteParser(),
+        theme: ThemeData.dark().copyWith(scaffoldBackgroundColor: Colors.black),
+      ),
     );
   }
 }

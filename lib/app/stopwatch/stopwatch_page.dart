@@ -28,6 +28,16 @@ class StopwatchPage extends StatelessWidget {
                             radius: radius,
                           ),
                         ),
+                      for (int s = 5000; s <= 60 * 1000; s += 5000)
+                        Positioned(
+                          left: radius,
+                          top: radius,
+                          child: StopwatchTextMarker(
+                            value: s,
+                            maxValue: 60000,
+                            radius: radius,
+                          ),
+                        ),
                     ],
                   );
                 }),

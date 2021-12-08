@@ -38,6 +38,14 @@ class StopwatchPage extends StatelessWidget {
                             radius: radius,
                           ),
                         ),
+                      Positioned(
+                        left: 0.0,
+                        right: 0.0,
+                        top: radius * 1.35,
+                        child: const StopwatchElapsedTimeText(
+                          elapsed: Duration(seconds: 0),
+                        ),
+                      )
                     ],
                   );
                 }),

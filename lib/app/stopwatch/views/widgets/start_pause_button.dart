@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../../../../core/constants/constants.dart';
 import '../../../../core/widgets/widgets.dart';
-import '../../view_model/stopwatch_viewmodel.dart';
+import '../../view_model/view_model.dart';
 
 class StartStopButton extends StatelessWidget {
   const StartStopButton({

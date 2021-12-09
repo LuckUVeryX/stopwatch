@@ -21,8 +21,8 @@ class StopwatchElapsedTimeText extends StatelessWidget {
         TimeDigit(elapsed.seconds().substring(0, 1), width: _digitWidth),
         TimeDigit(elapsed.seconds().substring(1, 2), width: _digitWidth),
         const TimeDigit('.', width: 6),
-        TimeDigit(elapsed.seconds().substring(0, 1), width: _digitWidth),
-        TimeDigit(elapsed.seconds().substring(1, 2), width: _digitWidth),
+        TimeDigit(elapsed.hundreds().substring(0, 1), width: _digitWidth),
+        TimeDigit(elapsed.hundreds().substring(1, 2), width: _digitWidth),
       ],
     );
   }

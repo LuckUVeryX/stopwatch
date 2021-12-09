@@ -1,67 +1,21 @@
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/scheduler.dart';
+import 'package:flutter/widgets.dart';
 
-import '../../../core/constants/palette.dart';
-
-enum StopwatchState { init, paused, running }
+import '../../../core/constants/constants.dart';
+import '../data/stopwatch_state.dart';
+import 'view_models.dart';
 
 class StopwatchViewModel extends ChangeNotifier {
+  StopwatchViewModel(this._tickerModel) {
+    pageController = PageController();
+  }
+
+  final StopwatchTickerViewModel _tickerModel;
+  late final PageController pageController;
+
   static const _kStartLabel = 'Start';
   static const _kStopLabel = 'Stop';
   static const _kLapLabel = 'Lap';
   static const _kResetLabel = 'Reset';
-
-  late final Ticker _ticker;
-  set ticker(Ticker ticker) {
-    _ticker = ticker;
-  }
-
-  void startTimer() {
-    _ticker.start();
-    _state = StopwatchState.running;
-    notifyListeners();
-  }
-
-  StopwatchState get state => _state;
-  StopwatchState _state = StopwatchState.init;
-  void _updateState(StopwatchState value) {
-    _state = value;
-    switch (value) {
-      case StopwatchState.init:
-        _ticker.stop();
-        _currentlyElapsed = Duration.zero;
-        _previouslyElapsed = Duration.zero;
-        _startStopLabel = _kStartLabel;
-        _lapResetLabel = _kLapLabel;
-        _startStopButtonColor = Palette.kButtonGreen;
-        _startStopButtonLabelColor = Palette.kGreenText;
-        _lapResetButtonColor = Palette.kButtonDisabled;
-        _lapResetButtonLabelColor = Palette.kGreyText;
-        break;
-      case StopwatchState.paused:
-        _ticker.stop();
-        _previouslyElapsed += _currentlyElapsed;
-        _currentlyElapsed = Duration.zero;
-        _ticker.stop();
-        _startStopLabel = _kStartLabel;
-        _lapResetLabel = _kResetLabel;
-        _startStopButtonColor = Palette.kButtonGreen;
-        _startStopButtonLabelColor = Palette.kGreenText;
-        _lapResetButtonColor = Palette.kButtonGrey;
-        _lapResetButtonLabelColor = Palette.kWhite;
-        break;
-      case StopwatchState.running:
-        _ticker.start();
-        _startStopLabel = _kStopLabel;
-        _lapResetLabel = _kLapLabel;
-        _startStopButtonColor = Palette.kButtonRed;
-        _startStopButtonLabelColor = Palette.kRedText;
-        _lapResetButtonColor = Palette.kButtonGrey;
-        _lapResetButtonLabelColor = Palette.kWhite;
-        break;
-    }
-  }
 
   String get startStopLabel => _startStopLabel;
   String _startStopLabel = _kStartLabel;
@@ -81,11 +35,39 @@ class StopwatchViewModel extends ChangeNotifier {
   Color get lapResetButtonLabelColor => _lapResetButtonLabelColor;
   Color _lapResetButtonLabelColor = Palette.kGreyText;
 
-  Duration get elapsed => _currentlyElapsed + _previouslyElapsed;
-  Duration _previouslyElapsed = Duration.zero;
-  Duration _currentlyElapsed = Duration.zero;
-  set currentlyElapsed(Duration elapsed) {
-    _currentlyElapsed = elapsed;
+  StopwatchState get state => _state;
+  StopwatchState _state = StopwatchState.init;
+  void _updateState(StopwatchState value) {
+    _state = value;
+    switch (value) {
+      case StopwatchState.init:
+        _tickerModel.resetTimer();
+        _startStopLabel = _kStartLabel;
+        _lapResetLabel = _kLapLabel;
+        _startStopButtonColor = Palette.kButtonGreen;
+        _startStopButtonLabelColor = Palette.kGreenText;
+        _lapResetButtonColor = Palette.kButtonDisabled;
+        _lapResetButtonLabelColor = Palette.kGreyText;
+        break;
+      case StopwatchState.paused:
+        _tickerModel.pauseTimer();
+        _startStopLabel = _kStartLabel;
+        _lapResetLabel = _kResetLabel;
+        _startStopButtonColor = Palette.kButtonGreen;
+        _startStopButtonLabelColor = Palette.kGreenText;
+        _lapResetButtonColor = Palette.kButtonGrey;
+        _lapResetButtonLabelColor = Palette.kWhite;
+        break;
+      case StopwatchState.running:
+        _tickerModel.startTimer();
+        _startStopLabel = _kStopLabel;
+        _lapResetLabel = _kLapLabel;
+        _startStopButtonColor = Palette.kButtonRed;
+        _startStopButtonLabelColor = Palette.kRedText;
+        _lapResetButtonColor = Palette.kButtonGrey;
+        _lapResetButtonLabelColor = Palette.kWhite;
+        break;
+    }
   }
 
   void toggleRunning() {
@@ -124,11 +106,5 @@ class StopwatchViewModel extends ChangeNotifier {
   void _resetTimer() {
     _updateState(StopwatchState.init);
     notifyListeners();
-  }
-
-  @override
-  void dispose() {
-    _ticker.dispose();
-    super.dispose();
   }
 }

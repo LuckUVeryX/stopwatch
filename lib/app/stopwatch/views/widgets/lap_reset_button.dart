@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../core/constants/stopwatch_constants.dart';
-import '../../../../core/palette.dart';
 import '../../../../core/widgets/widgets.dart';
+import '../../view_model/stopwatch_viewmodel.dart';
 
 class LapResetButton extends StatelessWidget {
   const LapResetButton({
@@ -16,12 +17,14 @@ class LapResetButton extends StatelessWidget {
       child: SizedBox(
         height: StopwatchConst.kButtonSize,
         width: StopwatchConst.kButtonSize,
-        child: TimerButton(
-          label: 'Lap',
-          labelColor: Palette.kGreyText,
-          color: Palette.kButtonDisabled,
-          onPressed: () {},
-        ),
+        child: Consumer<StopwatchViewModel>(builder: (context, model, _) {
+          return TimerButton(
+            label: model.lapResetLabel,
+            labelColor: model.lapResetButtonLabelColor,
+            color: model.lapResetButtonColor,
+            onPressed: context.read<StopwatchViewModel>().lapResetOnPressed,
+          );
+        }),
       ),
     );
   }

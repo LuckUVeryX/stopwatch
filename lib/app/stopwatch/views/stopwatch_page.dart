@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../core/constants/stopwatch_constants.dart';
-import '../../../core/palette.dart';
-import '../../../core/widgets/timer_button.dart';
 import '../view_model/stopwatch_viewmodel.dart';
 import 'views.dart';
+import 'widgets/widgets.dart';
 
 class StopwatchPage extends StatelessWidget {
   const StopwatchPage({Key? key}) : super(key: key);
@@ -28,32 +26,8 @@ class StopwatchPage extends StatelessWidget {
                       children: [
                         StopwatchRender(radius: radius),
                         StopwatchTickerUI(radius: radius),
-                        Align(
-                          alignment: Alignment.bottomLeft,
-                          child: SizedBox(
-                            height: StopwatchConst.kButtonSize,
-                            width: StopwatchConst.kButtonSize,
-                            child: TimerButton(
-                              label: 'Lap',
-                              labelColor: Palette.kGreyText,
-                              color: Palette.kButtonDisabled,
-                              onPressed: () {},
-                            ),
-                          ),
-                        ),
-                        Align(
-                          alignment: Alignment.bottomRight,
-                          child: SizedBox(
-                            height: StopwatchConst.kButtonSize,
-                            width: StopwatchConst.kButtonSize,
-                            child: TimerButton(
-                              label: 'Start',
-                              labelColor: Palette.kGreenText,
-                              color: Palette.kButtonGreen,
-                              onPressed: () {},
-                            ),
-                          ),
-                        ),
+                        const LapResetButton(),
+                        const StartStopButton(),
                       ],
                     );
                   }),

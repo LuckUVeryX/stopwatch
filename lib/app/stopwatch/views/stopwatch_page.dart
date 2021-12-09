@@ -1,9 +1,9 @@
 import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../view_models/view_models.dart';
 
-import '../view_model/view_model.dart';
-import 'views.dart';
+import 'stopwatch_widgets.dart';
 import 'widgets/widgets.dart';
 
 class StopwatchPage extends StatelessWidget {
@@ -15,7 +15,6 @@ class StopwatchPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => StopwatchTickerViewModel()),
@@ -38,27 +37,8 @@ class StopwatchPage extends StatelessWidget {
                       children: [
                         PageView(
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Consumer<StopwatchTickerViewModel>(
-                                builder: (_, model, __) {
-                                  return StopwatchElapsedTimeText(
-                                    elapsed: model.elapsed,
-                                    textStyle: textTheme.headline1
-                                        ?.copyWith(fontSize: 96),
-                                    digitWidth: constraints.maxWidth / 8,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                  );
-                                },
-                              ),
-                            ),
-                            Stack(
-                              children: [
-                                StopwatchRender(radius: radius),
-                                StopwatchTickerUI(radius: radius),
-                              ],
-                            ),
+                            SimpleStopwatch(radius: radius),
+                            AnalogStopwatch(radius: radius),
                           ],
                         ),
                         const LapResetButton(),

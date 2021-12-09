@@ -3,7 +3,7 @@ import 'package:flutter/rendering.dart';
 
 import '../../../core/constants/constants.dart';
 import '../data/stopwatch_state.dart';
-import 'view_model.dart';
+import 'view_models.dart';
 
 class StopwatchViewModel extends ChangeNotifier {
   StopwatchViewModel(this._tickerModel);

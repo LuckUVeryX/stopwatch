@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/constants/stopwatch_constants.dart';
-import 'widgets/widgets.dart';
+import '../../../../core/constants/stopwatch_constants.dart';
+import 'analog_stopwatch_widgets.dart';
 
 class StopwatchRender extends StatelessWidget {
   const StopwatchRender({

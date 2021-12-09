@@ -3,9 +3,10 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../core/constants/constants.dart';
-import '../view_model/stopwatch_ticker_viewmodel.dart';
-import 'widgets/widgets.dart';
+import '../../../../core/constants/constants.dart';
+import '../../view_models/view_models.dart';
+import '../widgets/widgets.dart';
+import 'analog_stopwatch_widgets.dart';
 
 class StopwatchTickerUI extends StatelessWidget {
   const StopwatchTickerUI({

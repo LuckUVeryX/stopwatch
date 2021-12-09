@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-import '../../core/constants/stopwatch_constants.dart';
+import '../../../core/constants/stopwatch_constants.dart';
 import 'widgets/widgets.dart';
 
 class StopwatchPage extends StatelessWidget {

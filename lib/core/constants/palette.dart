@@ -16,4 +16,6 @@ class Palette {
   static const kButtonGrey = Color(0xff262626);
   static const kButtonDisabled = Color(0xff151517);
   static const kGreyText = Color(0xff898a91);
+
+  static const kDividerColor = Color(0xff262628);
 }

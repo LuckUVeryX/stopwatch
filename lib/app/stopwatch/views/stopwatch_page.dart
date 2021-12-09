@@ -5,6 +5,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../core/constants/constants.dart';
 import '../view_models/view_models.dart';
+import 'laps_display.dart';
 import 'stopwatch_widgets.dart';
 import 'widgets/widgets.dart';
 
@@ -27,11 +28,11 @@ class StopwatchPage extends StatelessWidget {
       ],
       child: Scaffold(
         body: SafeArea(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: AspectRatio(
+          child: Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Column(
+              children: [
+                AspectRatio(
                   aspectRatio: 0.90,
                   child: LayoutBuilder(builder: (context, constraints) {
                     final radius = constraints.maxWidth / 2;
@@ -53,8 +54,11 @@ class StopwatchPage extends StatelessWidget {
                     );
                   }),
                 ),
-              ),
-            ],
+                const SizedBox(height: 16.0),
+                const Divider(color: Palette.kDividerColor, thickness: 1),
+                const LapsDisplay(),
+              ],
+            ),
           ),
         ),
       ),

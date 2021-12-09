@@ -1,6 +1,6 @@
 extension DurationParser on Duration {
   String hundreds() {
-    final hundreds = ((inMilliseconds / 10) % 100);
+    final hundreds = (inMilliseconds / 10) % 100;
     return hundreds.toStringAsFixed(0).padLeft(2, '0');
   }
 

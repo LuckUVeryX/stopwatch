@@ -6,4 +6,9 @@ class StopwatchConst {
 
   static const kMinutesHeight = 8.0;
   static const kHalfMinutesHeight = 4.0;
+
+  static const kTextMarkerWidth = 40.0;
+  static const kTextMarkerHeight = 32.0;
+
+  static const kTextMarkerPad = 32.0;
 }

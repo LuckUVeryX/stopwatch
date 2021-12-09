@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
+import '../../core/constants/stopwatch_constants.dart';
 import 'widgets/widgets.dart';
 
 class StopwatchPage extends StatelessWidget {
@@ -34,10 +35,13 @@ class StopwatchPage extends StatelessWidget {
                         Positioned(
                           left: radius,
                           top: radius,
-                          child: StopwatchSecsTextMarker(
+                          child: StopwatchTextMarker(
                             value: s,
                             maxValue: 60000,
                             radius: radius,
+                            kBoxHeight: StopwatchConst.kTextMarkerHeight,
+                            kBoxWidth: StopwatchConst.kTextMarkerWidth,
+                            kRingPad: StopwatchConst.kTextMarkerPad,
                           ),
                         ),
                       Positioned(

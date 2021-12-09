@@ -2,21 +2,24 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-class StopwatchSecsTextMarker extends StatelessWidget {
-  const StopwatchSecsTextMarker({
+// TODO: use for minutes marker as well
+class StopwatchTextMarker extends StatelessWidget {
+  const StopwatchTextMarker({
     Key? key,
     required this.value,
     required this.maxValue,
     required this.radius,
+    required this.kBoxWidth,
+    required this.kBoxHeight,
+    required this.kRingPad,
   }) : super(key: key);
 
   final int value;
   final int maxValue;
   final double radius;
-
-  static const _kBoxWidth = 40.0;
-  static const _kBoxHeight = 32.0;
-  static const _kRingPad = 32.0;
+  final double kBoxWidth;
+  final double kBoxHeight;
+  final double kRingPad;
 
   @override
   Widget build(BuildContext context) {
@@ -24,13 +27,13 @@ class StopwatchSecsTextMarker extends StatelessWidget {
     return Transform(
       alignment: Alignment.center,
       transform: Matrix4.identity()
-        ..translate(-_kBoxWidth / 2, -_kBoxHeight / 2, 0.0)
+        ..translate(-kBoxWidth / 2, -kBoxHeight / 2, 0.0)
         ..rotateZ(pi + 2 * pi * (value / maxValue))
-        ..translate(0.0, radius - _kRingPad, 0.0)
+        ..translate(0.0, radius - kRingPad, 0.0)
         ..rotateZ(pi - 2 * pi * (value / maxValue)),
       child: SizedBox(
-        width: _kBoxWidth,
-        height: _kBoxHeight,
+        width: kBoxWidth,
+        height: kBoxHeight,
         child: Center(
           child: Text(
             (value / 1000).toStringAsFixed(0),

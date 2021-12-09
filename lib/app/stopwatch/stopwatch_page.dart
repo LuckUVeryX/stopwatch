@@ -8,8 +8,12 @@ import 'widgets/widgets.dart';
 class StopwatchPage extends StatelessWidget {
   const StopwatchPage({Key? key}) : super(key: key);
 
+  static const kMaxSecs = 60;
+  static const kMaxMin = 30;
+
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -31,17 +35,18 @@ class StopwatchPage extends StatelessWidget {
                             radius: radius,
                           ),
                         ),
-                      for (int s = 5000; s <= 60 * 1000; s += 5000)
+                      for (int sec = 5; sec <= kMaxSecs; sec += 5)
                         Positioned(
                           left: radius,
                           top: radius,
                           child: StopwatchTextMarker(
-                            value: s,
-                            maxValue: 60000,
+                            value: sec,
+                            maxValue: kMaxSecs,
                             radius: radius,
-                            kBoxHeight: StopwatchConst.kTextMarkerHeight,
-                            kBoxWidth: StopwatchConst.kTextMarkerWidth,
-                            kRingPad: StopwatchConst.kTextMarkerPad,
+                            textHeight: StopwatchConst.kTextMarkerHeight,
+                            textWidth: StopwatchConst.kTextMarkerWidth,
+                            ringPad: radius / 5,
+                            textStyle: textTheme.headline5,
                           ),
                         ),
                       Positioned(
@@ -56,17 +61,31 @@ class StopwatchPage extends StatelessWidget {
                         left: radius,
                         top: radius,
                         child: StopwatchSecsHand(
-                          rotationZAngle: pi + (2 * pi / 60000) * 5000,
+                          rotationZAngle: pi + 2 * pi / 60 * 5,
                           handLength: radius,
                         ),
                       ),
-                      for (int s = 0; s < 30 * 60; s += 30)
+                      for (int s = 0; s < kMaxMin * 60; s += 30)
                         Positioned(
                           left: radius,
                           top: radius * 2 / 3,
                           child: StopwatchMinsTickMarker(
                             seconds: s,
                             radius: radius / 4,
+                          ),
+                        ),
+                      for (int min = 5; min <= kMaxMin; min += 5)
+                        Positioned(
+                          left: radius,
+                          top: radius * 2 / 3,
+                          child: StopwatchTextMarker(
+                            value: min,
+                            maxValue: kMaxMin,
+                            radius: radius * 2 / 3,
+                            textWidth: StopwatchConst.kTextMarkerWidth,
+                            textHeight: StopwatchConst.kTextMarkerHeight,
+                            ringPad: radius * 0.52,
+                            textStyle: textTheme.bodyText1,
                           ),
                         ),
                     ],

@@ -2,42 +2,42 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-// TODO: use for minutes marker as well
 class StopwatchTextMarker extends StatelessWidget {
   const StopwatchTextMarker({
     Key? key,
     required this.value,
     required this.maxValue,
     required this.radius,
-    required this.kBoxWidth,
-    required this.kBoxHeight,
-    required this.kRingPad,
+    required this.textWidth,
+    required this.textHeight,
+    required this.ringPad,
+    required this.textStyle,
   }) : super(key: key);
 
   final int value;
   final int maxValue;
   final double radius;
-  final double kBoxWidth;
-  final double kBoxHeight;
-  final double kRingPad;
+  final double textWidth;
+  final double textHeight;
+  final double ringPad;
+  final TextStyle? textStyle;
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     return Transform(
       alignment: Alignment.center,
       transform: Matrix4.identity()
-        ..translate(-kBoxWidth / 2, -kBoxHeight / 2, 0.0)
+        ..translate(-textWidth / 2, -textHeight / 2, 0.0)
         ..rotateZ(pi + 2 * pi * (value / maxValue))
-        ..translate(0.0, radius - kRingPad, 0.0)
+        ..translate(0.0, radius - ringPad, 0.0)
         ..rotateZ(pi - 2 * pi * (value / maxValue)),
       child: SizedBox(
-        width: kBoxWidth,
-        height: kBoxHeight,
+        width: textWidth,
+        height: textHeight,
         child: Center(
           child: Text(
-            (value / 1000).toStringAsFixed(0),
-            style: textTheme.headline5,
+            value.toStringAsFixed(0),
+            style: textStyle,
             textAlign: TextAlign.center,
           ),
         ),

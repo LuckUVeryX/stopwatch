@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'core/palette.dart';
+import 'core/constants/constants.dart';
 import 'core/router/router.gr.dart';
 
 void main() {

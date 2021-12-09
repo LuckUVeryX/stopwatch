@@ -38,15 +38,26 @@ class StopwatchPage extends StatelessWidget {
                       children: [
                         PageView(
                           children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Consumer<StopwatchTickerViewModel>(
+                                builder: (_, model, __) {
+                                  return StopwatchElapsedTimeText(
+                                    elapsed: model.elapsed,
+                                    textStyle: textTheme.headline1
+                                        ?.copyWith(fontSize: 96),
+                                    digitWidth: constraints.maxWidth / 8,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                  );
+                                },
+                              ),
+                            ),
                             Stack(
                               children: [
                                 StopwatchRender(radius: radius),
                                 StopwatchTickerUI(radius: radius),
                               ],
-                            ),
-                            StopwatchElapsedTimeText(
-                              elapsed: const Duration(seconds: 45),
-                              textStyle: textTheme.headline1,
                             ),
                           ],
                         ),

@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../core/constants/constants.dart';
 import '../view_model/stopwatch_ticker_viewmodel.dart';
 import 'widgets/widgets.dart';
 
@@ -27,6 +28,8 @@ class StopwatchTickerUI extends StatelessWidget {
             child: StopwatchElapsedTimeText(
               elapsed: model.elapsed,
               textStyle: textTheme.headline6,
+              digitWidth: StopwatchConst.kSmallDigitWidth,
+              mainAxisAlignment: MainAxisAlignment.center,
             ),
           ),
           // * Seconds hand

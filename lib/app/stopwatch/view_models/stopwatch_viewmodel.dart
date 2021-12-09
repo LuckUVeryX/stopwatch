@@ -35,12 +35,16 @@ class StopwatchViewModel extends ChangeNotifier {
   Color get lapResetButtonLabelColor => _lapResetButtonLabelColor;
   Color _lapResetButtonLabelColor = Palette.kGreyText;
 
+  List<Duration> get laps => List.unmodifiable(_laps);
+  final List<Duration> _laps = [];
+
   StopwatchState get state => _state;
   StopwatchState _state = StopwatchState.init;
   void _updateState(StopwatchState value) {
     _state = value;
     switch (value) {
       case StopwatchState.init:
+        _laps.clear();
         _tickerModel.resetTimer();
         _startStopLabel = _kStartLabel;
         _lapResetLabel = _kLapLabel;
@@ -94,12 +98,14 @@ class StopwatchViewModel extends ChangeNotifier {
         _resetTimer();
         break;
       case StopwatchState.running:
-        _lap();
+        _lapOnPressed();
         break;
     }
   }
 
-  void _lap() {
+  void _lapOnPressed() {
+    _laps.add(_tickerModel.lapTime);
+    _tickerModel.resetLapTime();
     notifyListeners();
   }
 

@@ -1,3 +1,4 @@
+import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -7,6 +8,10 @@ import 'widgets/widgets.dart';
 
 class StopwatchPage extends StatelessWidget {
   const StopwatchPage({Key? key}) : super(key: key);
+
+  static const beamLocation =
+      BeamPage(key: ValueKey('stopwatch'), child: StopwatchPage());
+  static const path = '/stopwatch';
 
   @override
   Widget build(BuildContext context) {

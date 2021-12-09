@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../core/palette.dart';
 
-class StopwatchSecsHand extends StatelessWidget {
-  const StopwatchSecsHand({
+class StopwatchHand extends StatelessWidget {
+  const StopwatchHand({
     Key? key,
     required this.rotationZAngle,
     required this.handLength,
@@ -17,6 +17,7 @@ class StopwatchSecsHand extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Transform(
+      alignment: Alignment.topCenter,
       transform: Matrix4.identity()
         ..translate(-_kHandThickness / 2, 0.0, 0.0)
         ..rotateZ(rotationZAngle),

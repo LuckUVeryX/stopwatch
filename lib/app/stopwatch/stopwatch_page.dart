@@ -60,7 +60,7 @@ class StopwatchPage extends StatelessWidget {
                       Positioned(
                         left: radius,
                         top: radius,
-                        child: StopwatchSecsHand(
+                        child: StopwatchHand(
                           rotationZAngle: pi + 2 * pi / 60 * 5,
                           handLength: radius,
                         ),
@@ -88,6 +88,14 @@ class StopwatchPage extends StatelessWidget {
                             textStyle: textTheme.bodyText1,
                           ),
                         ),
+                      Positioned(
+                        left: radius,
+                        top: radius * 2 / 3,
+                        child: StopwatchHand(
+                          rotationZAngle: pi + 2 * pi / 30 * 5,
+                          handLength: radius / 4,
+                        ),
+                      ),
                     ],
                   );
                 }),

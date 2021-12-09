@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/constants/constants.dart';
 import '../../../../core/utils/utils.dart';
 
 class StopwatchElapsedTimeText extends StatelessWidget {
@@ -88,7 +89,7 @@ class TimeDigit extends StatelessWidget {
       child: Center(
         child: Text(
           text,
-          style: textStyle,
+          style: textStyle?.copyWith(color: Palette.kWhite),
           textAlign: TextAlign.center,
         ),
       ),

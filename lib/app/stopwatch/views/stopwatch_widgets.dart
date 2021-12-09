@@ -43,7 +43,7 @@ class SimpleStopwatch extends StatelessWidget {
             elapsed: model.elapsed,
             textStyle: textTheme.headline1?.copyWith(fontSize: 96),
             digitWidth: radius / 4,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
           );
         },
       ),

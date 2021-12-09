@@ -2,8 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-import '../../../../core/constants/stopwatch_constants.dart';
-import '../../../../core/palette.dart';
+import '../../../../core/constants/constants.dart';
 
 class StopwatchSecsTickMarker extends StatelessWidget {
   const StopwatchSecsTickMarker(

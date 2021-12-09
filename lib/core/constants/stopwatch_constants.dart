@@ -9,4 +9,6 @@ class StopwatchConst {
 
   static const kTextMarkerWidth = 40.0;
   static const kTextMarkerHeight = 32.0;
+
+  static const kButtonSize = 80.0;
 }

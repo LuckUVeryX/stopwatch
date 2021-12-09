@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../view_model/stopwatch_viewmodel.dart';
 import 'views.dart';
+import 'widgets/widgets.dart';
 
 class StopwatchPage extends StatelessWidget {
   const StopwatchPage({Key? key}) : super(key: key);
@@ -18,13 +19,15 @@ class StopwatchPage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: AspectRatio(
-                  aspectRatio: 1 / 1,
+                  aspectRatio: 0.90,
                   child: LayoutBuilder(builder: (context, constraints) {
                     final radius = constraints.maxWidth / 2;
                     return Stack(
                       children: [
                         StopwatchRender(radius: radius),
                         StopwatchTickerUI(radius: radius),
+                        const LapResetButton(),
+                        const StartStopButton(),
                       ],
                     );
                   }),

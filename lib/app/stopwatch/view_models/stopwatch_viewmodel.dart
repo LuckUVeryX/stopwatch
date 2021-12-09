@@ -1,14 +1,16 @@
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
 
 import '../../../core/constants/constants.dart';
 import '../data/stopwatch_state.dart';
 import 'view_models.dart';
 
 class StopwatchViewModel extends ChangeNotifier {
-  StopwatchViewModel(this._tickerModel);
+  StopwatchViewModel(this._tickerModel) {
+    pageController = PageController();
+  }
 
   final StopwatchTickerViewModel _tickerModel;
+  late final PageController pageController;
 
   static const _kStartLabel = 'Start';
   static const _kStopLabel = 'Stop';

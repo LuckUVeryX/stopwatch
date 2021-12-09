@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/utils/utils.dart';
+import '../../../../core/utils/utils.dart';
 
 class StopwatchElapsedTimeText extends StatelessWidget {
   const StopwatchElapsedTimeText({Key? key, required this.elapsed})
@@ -21,8 +21,8 @@ class StopwatchElapsedTimeText extends StatelessWidget {
         TimeDigit(elapsed.seconds().substring(0, 1), width: _digitWidth),
         TimeDigit(elapsed.seconds().substring(1, 2), width: _digitWidth),
         const TimeDigit('.', width: 6),
-        TimeDigit(elapsed.seconds().substring(0, 1), width: _digitWidth),
-        TimeDigit(elapsed.seconds().substring(1, 2), width: _digitWidth),
+        TimeDigit(elapsed.hundreds().substring(0, 1), width: _digitWidth),
+        TimeDigit(elapsed.hundreds().substring(1, 2), width: _digitWidth),
       ],
     );
   }

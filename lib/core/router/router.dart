@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 
-import '../../app/stopwatch/stopwatch_page.dart';
+import '../../app/stopwatch/views/stopwatch_page.dart';
 
 @MaterialAutoRouter(
   replaceInRouteName: 'Page,Route',

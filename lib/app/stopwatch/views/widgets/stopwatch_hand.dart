@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/palette.dart';
+import '../../../../core/palette.dart';
 
 class StopwatchHand extends StatelessWidget {
   const StopwatchHand({

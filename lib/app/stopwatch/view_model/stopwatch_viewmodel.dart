@@ -14,20 +14,20 @@ class StopwatchViewModel extends ChangeNotifier {
   Duration _currentlyElapsed = Duration.zero;
   set currentlyElapsed(Duration elapsed) {
     _currentlyElapsed = elapsed;
-    notifyListeners();
   }
 
   bool get isRunning => _isRunning;
   bool _isRunning = false;
-  void toggleRunning(Ticker ticker) {
+  void toggleRunning() {
     _isRunning = !_isRunning;
     if (_isRunning) {
-      ticker.start();
+      _ticker.start();
     } else {
-      ticker.stop();
+      _ticker.stop();
       _previouslyElapsed += _currentlyElapsed;
       currentlyElapsed = Duration.zero;
     }
+    notifyListeners();
   }
 
   @override

@@ -27,9 +27,10 @@ class _StopwatchTickerUIState extends State<StopwatchTickerUI>
   void initState() {
     final model = Provider.of<StopwatchViewModel>(context, listen: false);
     model.ticker = createTicker((elapsed) {
-      model.currentlyElapsed = elapsed;
+      setState(() {
+        model.currentlyElapsed = elapsed;
+      });
     });
-    model.startTimer();
     super.initState();
   }
 

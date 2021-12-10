@@ -14,27 +14,14 @@ class AnalogStopwatch extends StatelessWidget {
 
   final double radius;
 
-  static const _kStopwatchPinSize = 8.0;
-
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         StopwatchRender(radius: radius),
+        StopwatchMinPin(radius: radius),
         StopwatchTickerUI(radius: radius),
-        Positioned(
-          left: radius - _kStopwatchPinSize / 2,
-          top: radius - _kStopwatchPinSize / 2,
-          child: Container(
-            width: _kStopwatchPinSize,
-            height: _kStopwatchPinSize,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: Palette.kBlack,
-              border: Border.all(color: Palette.kOrange, width: 2),
-            ),
-          ),
-        ),
+        StopwatchSecsPin(radius: radius),
       ],
     );
   }

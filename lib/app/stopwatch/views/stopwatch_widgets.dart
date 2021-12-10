@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../core/constants/constants.dart';
 import '../view_models/view_models.dart';
 import 'analog_stopwatch_widgets/analog_stopwatch_widgets.dart';
 import 'widgets/widgets.dart';
@@ -41,7 +42,8 @@ class SimpleStopwatch extends StatelessWidget {
         builder: (_, model, __) {
           return StopwatchElapsedTimeText(
             elapsed: model.elapsed,
-            textStyle: textTheme.headline1?.copyWith(fontSize: 96),
+            textStyle: textTheme.headline1
+                ?.copyWith(fontSize: 96, color: Palette.kWhite),
             digitWidth: radius / 4,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
           );

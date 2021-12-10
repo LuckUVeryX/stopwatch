@@ -13,8 +13,11 @@ import 'widgets/widgets.dart';
 class StopwatchPage extends StatelessWidget {
   const StopwatchPage({Key? key}) : super(key: key);
 
-  static const beamLocation =
-      BeamPage(key: ValueKey('stopwatch'), child: StopwatchPage());
+  static const beamLocation = BeamPage(
+    key: ValueKey('stopwatch'),
+    child: StopwatchPage(),
+    type: BeamPageType.noTransition,
+  );
   static const path = '/stopwatch';
 
   @override

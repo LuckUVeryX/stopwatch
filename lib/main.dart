@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
 
   final _routerDelegate = BeamerDelegate(
     locationBuilder: BeamerLocationBuilder(
-      beamLocations: [StopwatchLocation()],
+      beamLocations: [HomeLocation()],
     ),
   );
 
@@ -32,8 +32,16 @@ class MyApp extends StatelessWidget {
       child: MaterialApp.router(
         routerDelegate: _routerDelegate,
         routeInformationParser: BeamerParser(),
-        theme:
-            ThemeData.dark().copyWith(scaffoldBackgroundColor: Palette.kBlack),
+        theme: ThemeData.dark().copyWith(
+          scaffoldBackgroundColor: Palette.kBlack,
+          bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+            elevation: 0.0,
+            backgroundColor: Palette.kBlack,
+            selectedItemColor: Palette.kOrange,
+            type: BottomNavigationBarType.fixed,
+            selectedLabelStyle: TextStyle(fontSize: 12),
+          ),
+        ),
       ),
     );
   }

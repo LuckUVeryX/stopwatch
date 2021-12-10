@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
 
   final _routerDelegate = BeamerDelegate(
     locationBuilder: BeamerLocationBuilder(
-      beamLocations: [StopwatchLocation()],
+      beamLocations: [HomeLocation()],
     ),
   );
 

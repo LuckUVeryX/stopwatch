@@ -33,7 +33,18 @@ class MyApp extends StatelessWidget {
         routerDelegate: _routerDelegate,
         routeInformationParser: BeamerParser(),
         theme: ThemeData.dark().copyWith(
+          textButtonTheme: TextButtonThemeData(
+            style: TextButton.styleFrom(primary: Palette.kOrange),
+          ),
           scaffoldBackgroundColor: Palette.kBlack,
+          textTheme: Theme.of(context).textTheme.apply(
+                bodyColor: Palette.kWhite,
+                displayColor: Palette.kWhite,
+              ),
+          appBarTheme: const AppBarTheme(
+            color: Palette.kBlack,
+            iconTheme: IconThemeData(color: Palette.kOrange),
+          ),
           bottomNavigationBarTheme: const BottomNavigationBarThemeData(
             elevation: 0.0,
             backgroundColor: Palette.kBlack,

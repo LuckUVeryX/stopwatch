@@ -42,6 +42,7 @@ class WorldClockPage extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
           child: Consumer<WorldClockViewModel>(builder: (_, model, __) {
             return ListView.separated(
+              itemCount: 3,
               controller: model.controller,
               physics: const AlwaysScrollableScrollPhysics(),
               separatorBuilder: (context, index) => const Divider(),
@@ -51,9 +52,27 @@ class WorldClockPage extends StatelessWidget {
                       style: textTheme.headline4
                           ?.copyWith(fontWeight: FontWeight.bold));
                 }
-                return const SizedBox();
+                if (index == 2) {
+                  return const SizedBox();
+                }
+                return Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          // TODO: Color
+                          Text('Today, +0HRS', style: textTheme.subtitle2),
+                          Text('Singapore', style: textTheme.headline5),
+                        ],
+                      ),
+                      Text('5:49PM', style: textTheme.headline3),
+                    ],
+                  ),
+                );
               },
-              itemCount: 2,
             );
           }),
         ),

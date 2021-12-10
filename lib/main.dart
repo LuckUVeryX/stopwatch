@@ -33,6 +33,10 @@ class MyApp extends StatelessWidget {
         routerDelegate: _routerDelegate,
         routeInformationParser: BeamerParser(),
         theme: ThemeData.dark().copyWith(
+          dividerTheme: const DividerThemeData(
+            color: Palette.kDividerColor,
+            thickness: 1.5,
+          ),
           textButtonTheme: TextButtonThemeData(
             style: TextButton.styleFrom(primary: Palette.kOrange),
           ),

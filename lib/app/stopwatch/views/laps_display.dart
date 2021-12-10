@@ -18,10 +18,7 @@ class LapsDisplay extends StatelessWidget {
         return ListView.separated(
           itemCount: model.laps.length + 1,
           separatorBuilder: (_, __) {
-            return const Divider(
-              color: Palette.kDividerColor,
-              thickness: 1.5,
-            );
+            return const Divider();
           },
           itemBuilder: (_, idx) {
             if (idx == model.laps.length) {

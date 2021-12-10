@@ -89,7 +89,7 @@ class TimeDigit extends StatelessWidget {
       child: Center(
         child: Text(
           text,
-          style: textStyle?.copyWith(color: Palette.kWhite),
+          style: textStyle,
           textAlign: TextAlign.center,
         ),
       ),

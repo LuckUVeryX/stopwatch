@@ -38,6 +38,26 @@ class StopwatchViewModel extends ChangeNotifier {
   List<Duration> get laps => List.unmodifiable(_laps);
   final List<Duration> _laps = [];
 
+  int? get slowestLapIdx {
+    if (_laps.length > 2) {
+      List<Duration> _lapsCopy = List.from(_laps);
+      _lapsCopy.removeAt(0);
+      return _lapsCopy
+              .indexOf(_lapsCopy.reduce((a, b) => a.compareTo(b) > 0 ? a : b)) +
+          1;
+    }
+  }
+
+  int? get fastestLapIdx {
+    if (_laps.length > 2) {
+      List<Duration> _lapsCopy = List.from(_laps);
+      _lapsCopy.removeAt(0);
+      return _lapsCopy
+              .indexOf(_lapsCopy.reduce((a, b) => b.compareTo(a) > 0 ? a : b)) +
+          1;
+    }
+  }
+
   StopwatchState get state => _state;
   StopwatchState _state = StopwatchState.init;
   void _updateState(StopwatchState value) {
@@ -77,7 +97,7 @@ class StopwatchViewModel extends ChangeNotifier {
   void toggleRunning() {
     switch (_state) {
       case StopwatchState.init:
-        // * add initial lap when starting from initial state
+        // * add initial lap to empty list when starting from initial state
         _laps.add(_tickerModel.lapTime);
         _updateState(StopwatchState.running);
         break;
@@ -106,8 +126,11 @@ class StopwatchViewModel extends ChangeNotifier {
   }
 
   void _lapOnPressed() {
-    _laps.add(_tickerModel.lapTime);
+    // update lap times
+    _laps[0] = _tickerModel.lapTime;
     _tickerModel.resetLapTime();
+    // adds new placeholder laptime
+    _laps.insert(0, Duration.zero);
     notifyListeners();
   }
 

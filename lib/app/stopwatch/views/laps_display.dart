@@ -34,9 +34,10 @@ class LapsDisplay extends StatelessWidget {
                     style: textTheme.subtitle1?.copyWith(color: Palette.kWhite),
                   ),
                   if (idx == 0) ...[
-                    Consumer<StopwatchTickerViewModel>(builder: (_, model, __) {
+                    Consumer<StopwatchTickerViewModel>(
+                        builder: (_, tickerModel, __) {
                       return StopwatchElapsedTimeText(
-                        elapsed: model.lapTime,
+                        elapsed: tickerModel.lapTime,
                         textStyle: textTheme.subtitle1,
                         digitWidth: 10.0,
                         mainAxisAlignment: MainAxisAlignment.end,
@@ -44,8 +45,15 @@ class LapsDisplay extends StatelessWidget {
                     }),
                   ] else ...[
                     StopwatchElapsedTimeText(
-                      elapsed: model.laps[model.laps.length - idx],
-                      textStyle: textTheme.subtitle1,
+                      elapsed: model.laps[idx],
+                      textStyle: textTheme.subtitle1?.copyWith(
+                        // * colors the fastest and slowest lap times
+                        color: idx == model.fastestLapIdx
+                            ? Palette.kGreenText
+                            : idx == model.slowestLapIdx
+                                ? Palette.kRedText
+                                : null,
+                      ),
                       digitWidth: 10.0,
                       mainAxisAlignment: MainAxisAlignment.end,
                     ),

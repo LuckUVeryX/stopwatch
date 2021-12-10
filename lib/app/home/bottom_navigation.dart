@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
 import 'home_viewmodel.dart';
@@ -20,7 +21,7 @@ class BottomNavigationBarWidget extends StatelessWidget {
             label: 'World Clock',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.timer),
+            icon: Icon(FontAwesomeIcons.stopwatch),
             label: 'Stopwatch',
           ),
         ],

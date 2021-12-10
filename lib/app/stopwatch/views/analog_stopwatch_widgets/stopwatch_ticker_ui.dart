@@ -16,6 +16,8 @@ class StopwatchTickerUI extends StatelessWidget {
 
   final double radius;
 
+  static const _kStopwatchPinSize = 8.0;
+
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
@@ -65,6 +67,20 @@ class StopwatchTickerUI extends StatelessWidget {
               rotationZAngle: pi + 2 * pi / (30 * 60) * model.elapsed.inSeconds,
               handLength: radius / 4,
               color: Palette.kOrange,
+            ),
+          ),
+
+          Positioned(
+            left: radius - _kStopwatchPinSize / 2,
+            top: radius - _kStopwatchPinSize / 2,
+            child: Container(
+              width: _kStopwatchPinSize,
+              height: _kStopwatchPinSize,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Palette.kBlack,
+                border: Border.all(color: Palette.kOrange, width: 2),
+              ),
             ),
           ),
         ],

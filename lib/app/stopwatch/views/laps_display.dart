@@ -16,7 +16,7 @@ class LapsDisplay extends StatelessWidget {
     return Flexible(
       child: Consumer<StopwatchViewModel>(builder: (_, model, __) {
         return ListView.separated(
-          itemCount: model.laps.length,
+          itemCount: model.laps.length + 1,
           separatorBuilder: (_, __) {
             return const Divider(
               color: Palette.kDividerColor,
@@ -24,6 +24,9 @@ class LapsDisplay extends StatelessWidget {
             );
           },
           itemBuilder: (_, idx) {
+            if (idx == model.laps.length) {
+              return const SizedBox();
+            }
             return Padding(
               padding: const EdgeInsets.symmetric(vertical: 2.0),
               child: Row(

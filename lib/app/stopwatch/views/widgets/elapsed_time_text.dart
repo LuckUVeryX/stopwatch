@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/constants/constants.dart';
 import '../../../../core/utils/utils.dart';
 
 class StopwatchElapsedTimeText extends StatelessWidget {

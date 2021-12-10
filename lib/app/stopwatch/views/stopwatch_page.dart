@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../core/constants/constants.dart';
+import '../../../core/services/services.dart';
 import '../view_models/view_models.dart';
 import 'laps_display.dart';
 import 'stopwatch_widgets.dart';
@@ -22,8 +23,10 @@ class StopwatchPage extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => StopwatchTickerViewModel()),
         ChangeNotifierProvider(
-          create: (context) =>
-              StopwatchViewModel(context.read<StopwatchTickerViewModel>()),
+          create: (context) => StopwatchViewModel(
+            tickerModel: context.read<StopwatchTickerViewModel>(),
+            initalPage: context.read<AppPref>().stopwatchPref,
+          ),
         ),
       ],
       child: Scaffold(
@@ -39,6 +42,8 @@ class StopwatchPage extends StatelessWidget {
                     return Stack(
                       children: [
                         PageView(
+                          onPageChanged:
+                              context.read<AppPref>().setStopwatchPref,
                           physics: const ClampingScrollPhysics(),
                           controller:
                               context.read<StopwatchViewModel>().pageController,

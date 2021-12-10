@@ -50,6 +50,7 @@ class StopwatchTickerViewModel extends ChangeNotifier {
   void resetLapTime() {
     _totalTimeBeforeLap = elapsed;
     _lapTime = Duration.zero;
+    notifyListeners();
   }
 
   @override

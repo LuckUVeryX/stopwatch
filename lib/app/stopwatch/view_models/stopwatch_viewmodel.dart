@@ -77,6 +77,8 @@ class StopwatchViewModel extends ChangeNotifier {
   void toggleRunning() {
     switch (_state) {
       case StopwatchState.init:
+        // * add initial lap when starting from initial state
+        _laps.add(_tickerModel.lapTime);
         _updateState(StopwatchState.running);
         break;
       case StopwatchState.paused:

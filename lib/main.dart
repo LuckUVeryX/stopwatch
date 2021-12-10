@@ -1,12 +1,19 @@
 import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 
 import 'core/constants/constants.dart';
 import 'core/router/beam_locations.dart';
+import 'core/services/services.dart';
 
-void main() {
-  runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final AppPref appPref = AppPref.init();
+  await appPref.initializationComplete;
+  runApp(
+    Provider.value(value: appPref, child: MyApp()),
+  );
 }
 
 class MyApp extends StatelessWidget {

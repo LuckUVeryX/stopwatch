@@ -33,24 +33,41 @@ class StopwatchTickerUI extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
             ),
           ),
+          // * Minutes hand
+          Positioned(
+            left: radius,
+            top: radius * 2 / 3,
+            child: StopwatchHand(
+              rotationZAngle: pi + 2 * pi / (30 * 60) * model.elapsed.inSeconds,
+              handLength: radius / 4,
+              handTailLength: 0,
+              color: Palette.kOrange,
+            ),
+          ),
+          // * Laps hand
+          if (context.read<StopwatchViewModel>().laps.length > 1) ...[
+            Positioned(
+              left: radius,
+              top: radius,
+              child: StopwatchHand(
+                rotationZAngle:
+                    pi + 2 * pi / 60000 * model.lapTime.inMilliseconds,
+                handLength: radius,
+                handTailLength: radius / 5,
+                color: Colors.blue,
+              ),
+            )
+          ],
           // * Seconds hand
           Positioned(
             left: radius,
             top: radius,
             child: StopwatchHand(
               rotationZAngle:
-                  pi + 2 * pi / 60000 * (model.elapsed.inMilliseconds),
+                  pi + 2 * pi / 60000 * model.elapsed.inMilliseconds,
               handLength: radius,
-            ),
-          ),
-          // * Minutes hand
-          Positioned(
-            left: radius,
-            top: radius * 2 / 3,
-            child: StopwatchHand(
-              rotationZAngle:
-                  pi + 2 * pi / (30 * 60) * (model.elapsed.inSeconds),
-              handLength: radius / 4,
+              handTailLength: radius / 5,
+              color: Palette.kOrange,
             ),
           ),
         ],

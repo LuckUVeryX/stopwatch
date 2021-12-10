@@ -19,7 +19,9 @@ class AnalogStopwatch extends StatelessWidget {
     return Stack(
       children: [
         StopwatchRender(radius: radius),
+        StopwatchMinPin(radius: radius),
         StopwatchTickerUI(radius: radius),
+        StopwatchSecsPin(radius: radius),
       ],
     );
   }

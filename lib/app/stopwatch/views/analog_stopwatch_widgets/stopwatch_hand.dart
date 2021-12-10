@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/constants/constants.dart';
-
 class StopwatchHand extends StatelessWidget {
   const StopwatchHand({
     Key? key,
     required this.rotationZAngle,
     required this.handLength,
+    required this.color,
   }) : super(key: key);
 
   final double rotationZAngle;
   final double handLength;
+  final Color color;
 
   static const _kHandThickness = 2.0;
 
@@ -24,7 +24,7 @@ class StopwatchHand extends StatelessWidget {
       child: Container(
         height: handLength,
         width: _kHandThickness,
-        color: Palette.kOrange,
+        color: color,
       ),
     );
   }

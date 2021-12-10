@@ -47,7 +47,9 @@ class WorldClockPage extends StatelessWidget {
               separatorBuilder: (context, index) => const Divider(),
               itemBuilder: (context, index) {
                 if (index == 0) {
-                  return Text('World Clock', style: textTheme.headline4);
+                  return Text('World Clock',
+                      style: textTheme.headline4
+                          ?.copyWith(fontWeight: FontWeight.bold));
                 }
                 return const SizedBox();
               },

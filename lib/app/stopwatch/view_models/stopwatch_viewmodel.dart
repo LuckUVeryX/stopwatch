@@ -5,8 +5,11 @@ import '../data/stopwatch_state.dart';
 import 'view_models.dart';
 
 class StopwatchViewModel extends ChangeNotifier {
-  StopwatchViewModel(this._tickerModel) {
-    pageController = PageController();
+  StopwatchViewModel({
+    required StopwatchTickerViewModel tickerModel,
+    required int initalPage,
+  }) : _tickerModel = tickerModel {
+    pageController = PageController(initialPage: initalPage);
   }
 
   final StopwatchTickerViewModel _tickerModel;

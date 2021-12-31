@@ -35,12 +35,12 @@ class MyApp extends StatelessWidget {
         theme: ThemeData.dark().copyWith(
           scaffoldBackgroundColor: Palette.kBlack,
           bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-            elevation: 0.0,
-            backgroundColor: Palette.kBlack,
-            selectedItemColor: Palette.kOrange,
-            type: BottomNavigationBarType.fixed,
-            selectedLabelStyle: TextStyle(fontSize: 12),
-          ),
+              // elevation: 0.0,
+              // backgroundColor: Palette.kBlack,
+              // selectedItemColor: Palette.kOrange,
+              // type: BottomNavigationBarType.fixed,
+              // selectedLabelStyle: TextStyle(fontSize: 12),
+              ),
         ),
       ),
     );
